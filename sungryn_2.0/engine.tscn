@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2rknw41ll0pt"]
+
+[ext_resource type="Texture2D" uid="uid://dbmj4moyuo2bh" path="res://engine.png" id="1_spv2h"]
+[ext_resource type="Script" path="res://item.gd" id="2_oqer6"]
+
+[node name="Engine" type="TextureButton"]
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("1_spv2h")
+script = ExtResource("2_oqer6")
