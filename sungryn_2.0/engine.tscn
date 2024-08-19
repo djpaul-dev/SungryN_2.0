@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2rknw41ll0pt"]
+
+[ext_resource type="Texture2D" uid="uid://dbmj4moyuo2bh" path="res://engine.png" id="1_spv2h"]
+[ext_resource type="Script" path="res://item.gd" id="2_oqer6"]
+
+[node name="Engine" type="Node2D"]
+scale = Vector2(0.4, 0.4)
+script = ExtResource("2_oqer6")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -227.0
+offset_top = -175.0
+offset_right = 228.0
+offset_bottom = 177.0
+focus_mode = 0
+flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_spv2h")
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

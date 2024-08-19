@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=3 uid="uid://diubydqsg778o"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_ki3ts"]
+[ext_resource type="Texture2D" uid="uid://kmm3i4aj0p5j" path="res://SungryN_Mechanic.png" id="2_k1ypk"]
+[ext_resource type="Texture2D" uid="uid://djrqrjcqathpu" path="res://SungryN_Dialogue.png" id="3_yraxx"]
+[ext_resource type="AudioStream" uid="uid://cgv0prdj6qqib" path="res://SungryN_2.0_Audio.mp3" id="4_h4lhy"]
+[ext_resource type="AudioStream" uid="uid://c6whsxslwt0to" path="res://beep.mp3" id="4_yytui"]
+
+[node name="main" type="Node2D"]
+position = Vector2(-0.334671, 0)
+script = ExtResource("1_ki3ts")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="background" type="ColorRect" parent="."]
+offset_left = -402.665
+offset_top = -247.0
+offset_right = 914.335
+offset_bottom = 529.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SungryNMechanic" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(45, 304)
+scale = Vector2(0.265733, 0.265733)
+texture = ExtResource("2_k1ypk")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 13.6653
+offset_top = 11.0
+offset_right = 131.665
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Score: 0"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_left = 22.0
+offset_top = 210.0
+offset_right = 81.0
+offset_bottom = 233.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "LIVES: 0"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 174.0
+offset_top = 136.0
+offset_right = 476.0
+offset_bottom = 209.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "GAME OVER!
+Highest Score: 1,113,062"
+horizontal_alignment = 1
+
+[node name="SungryNDialogue" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(147.671, 285)
+scale = Vector2(0.290113, 0.333333)
+texture = ExtResource("3_yraxx")
+
+[node name="Timer" type="Timer" parent="CanvasLayer/SungryNDialogue"]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_h4lhy")
+autoplay = true
+parameters/looping = true
+
+[node name="ItemAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_yytui")
+volume_db = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/SungryNDialogue/Timer" to="." method="_on_timer_timeout2"]
